@@ -11,20 +11,11 @@ const logger = morgan("dev");
 app.use(logger);
 
 
-
-const home = (req,res) => {
-    return res.send("I still love you");
-}
-const login = (req,res) => {
-    return res.send("login here");
-}
-
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
-
-app.get("/", home);
-app.get("/login",login);
 
 const handleListening = () => console.log(`Server listening on port http://localhost:${PORT} ☞☞`);
 
